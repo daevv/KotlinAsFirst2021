@@ -15,6 +15,7 @@ internal class TableFunctionTest {
         function.add(3.0, 4.0)
         assertTrue(function.add(5.0, 6.0))
         assertFalse(function.add(5.0, 7.0))
+        assertTrue(function.getValue(5.0) == 7.0)
         assertEquals(3, function.size)
     }
 
@@ -79,5 +80,18 @@ internal class TableFunctionTest {
         f2.add(3.0, 4.0)
         f2.add(1.0, 2.0)
         assertEquals(f1, f2)
+    }
+
+    @Test
+
+    fun testHashCode() {
+        val f1 = TableFunction()
+        f1.add(1.0, 2.0)
+        f1.add(3.0, 4.0)
+        val f2 = TableFunction()
+        f2.add(3.0, 4.0)
+        f2.add(1.0, 2.0)
+
+        assertTrue(f1.hashCode() == f2.hashCode())
     }
 }
